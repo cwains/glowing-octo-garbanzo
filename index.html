@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icon.png">
+</head>
+<body>
+    <div class="container">
+        <h1>Clicker Game</h1>
+        <div class="score-container">
+            <span id="score">0</span>
+            <span>clicks</span>
+        </div>
+        <button id="clicker">Click Me!</button>
+        <div class="upgrades">
+            <h2>Upgrades</h2>
+            <div class="upgrade" id="auto-clicker">
+                <p>Auto Clicker (1 click/sec)</p>
+                <p>Cost: <span id="auto-clicker-cost">10</span> clicks</p>
+                <button class="buy-btn">Buy</button>
+                <p>Owned: <span id="auto-clicker-owned">0</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+    <script>
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
